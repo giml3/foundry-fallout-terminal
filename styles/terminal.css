@@ -1,0 +1,34 @@
+.fallout-terminal { --ft-green: #a6f7a2; --ft-dim: #70b880; --ft-bg: #07150f; }
+.fallout-terminal .window-content { padding: 0; background: #171d19; overflow: hidden; }
+.fallout-terminal .ft-screen {
+  display: flex; flex-direction: column; flex: 1; min-height: 0; margin: 12px;
+  padding: 24px; border: 2px solid #324c3a; border-radius: 22px;
+  background: radial-gradient(ellipse at center, #123420 0%, var(--ft-bg) 85%);
+  box-shadow: inset 0 0 35px #000b, 0 0 0 5px #101712;
+  color: var(--ft-green); font: 15px/1.65 "Courier New", monospace;
+  text-shadow: 0 0 5px #81ff8b35;
+}
+.fallout-terminal .ft-header { border-bottom: 1px solid #598c61; padding-bottom: 16px; }
+.fallout-terminal .ft-brand, .fallout-terminal .ft-label, .fallout-terminal .ft-footer { font-size: 11px; letter-spacing: 1.5px; color: var(--ft-dim); }
+.fallout-terminal h1 { font: bold 25px/1.3 "Courier New", monospace; text-transform: uppercase; color: inherit; margin: 7px 0; border: 0; overflow-wrap: anywhere; }
+.fallout-terminal h2 { font: bold 20px/1.4 "Courier New", monospace; color: inherit; border-bottom: 1px dashed #598c61; padding-bottom: 12px; }
+.fallout-terminal .ft-status { font-size: 11px; letter-spacing: 2px; }
+.fallout-terminal .ft-led { display: inline-block; width: 7px; height: 7px; margin-right: 9px; background: var(--ft-green); box-shadow: 0 0 9px #82ff77; border-radius: 50%; }
+.fallout-terminal .ft-body { display: grid; grid-template-columns: minmax(150px, 34%) 1fr; flex: 1; min-height: 0; gap: 22px; padding: 22px 0; }
+.fallout-terminal .ft-menu, .fallout-terminal .ft-content { overflow: auto; min-width: 0; scrollbar-color: #598c61 var(--ft-bg); }
+.fallout-terminal .ft-menu { border-right: 1px solid #35583c; padding-right: 18px; }
+.fallout-terminal button { font: inherit; color: var(--ft-green); background: transparent; border: 1px solid transparent; border-radius: 0; box-shadow: none; white-space: normal; height: auto; padding: 7px 9px; text-align: left; }
+.fallout-terminal .ft-menu button { width: 100%; margin-bottom: 7px; overflow-wrap: anywhere; }
+.fallout-terminal button:hover, .fallout-terminal button[aria-current="page"] { background: var(--ft-green); color: #07150f; text-shadow: none; }
+.fallout-terminal button:focus-visible, .fallout-terminal a:focus-visible { outline: 2px solid var(--ft-green); outline-offset: 2px; }
+.fallout-terminal .ft-content { overflow-wrap: anywhere; }
+.fallout-terminal .ft-content img { max-width: 100%; height: auto; }
+.fallout-terminal .ft-content a { color: inherit; }
+.fallout-terminal .ft-content .content-link, .fallout-terminal .ft-content .inline-roll { background: #183e24; color: var(--ft-green); border-color: #598c61; }
+.fallout-terminal .ft-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid #598c61; padding-top: 10px; }
+.fallout-terminal .ft-footer button { font-size: 10px; }
+.fallout-terminal .ft-empty { flex: 1; }
+.fallout-terminal .ft-prompt { margin-top: 35px; }
+.fallout-terminal .ft-cursor { animation: ft-blink 1.3s step-end infinite; }
+@keyframes ft-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .fallout-terminal .ft-cursor { animation: none; } }

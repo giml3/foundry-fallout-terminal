@@ -1,0 +1,7 @@
+{
+  "name": "fallout-terminal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test", "check": "node --check scripts/main.js && node --check scripts/model.js && node --check scripts/terminal.js" }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "fallout-terminal",
+  "title": "Fallout Journal Terminals",
+  "description": "Place interactive, journal-driven wasteland terminals on your scenes.",
+  "version": "0.1.0",
+  "url": "https://github.com/giml3/foundry-fallout-terminal",
+  "manifest": "https://github.com/giml3/foundry-fallout-terminal/releases/latest/download/module.json",
+  "download": "https://github.com/giml3/foundry-fallout-terminal/releases/download/v0.1.0/fallout-terminal-0.1.0.zip",
+  "bugs": "https://github.com/giml3/foundry-fallout-terminal/issues",
+  "compatibility": { "minimum": "14", "maximum": "14" },
+  "authors": [{ "name": "Fallout Journal Terminals contributors" }],
+  "relationships": { "systems": [{ "id": "fallout", "type": "system", "compatibility": { "minimum": "11.17.0" } }] },
+  "esmodules": ["scripts/main.js"],
+  "styles": ["styles/terminal.css"]
+}

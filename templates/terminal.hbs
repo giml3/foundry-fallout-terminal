@@ -1,0 +1,34 @@
+<section class="ft-screen">
+  <header class="ft-header">
+    <span class="ft-brand">UNIFIED OPERATING SYSTEM / V.14</span>
+    <h1>{{name}}</h1>
+    <div class="ft-status"><span class="ft-led"></span>{{#if unavailable}}OFFLINE{{else}}CONNECTION ESTABLISHED{{/if}}</div>
+  </header>
+  {{#if unavailable}}
+    <p class="ft-empty" role="alert">{{message}}</p>
+  {{else}}
+    <div class="ft-body">
+      <nav class="ft-menu" aria-label="Terminal entries">
+        <button type="button" data-action="home">&gt; ROOT DIRECTORY</button>
+        <p class="ft-label">{{count}} RECORDS AVAILABLE</p>
+        {{#each pages}}
+          <button type="button" data-action="selectPage" data-page-id="{{id}}" aria-current="{{#if active}}page{{else}}false{{/if}}">&gt; {{name}}</button>
+        {{else}}
+          <p>No readable text pages. Awaiting records.</p>
+        {{/each}}
+      </nav>
+      <article class="ft-content" aria-live="polite">
+        {{#if selected}}
+          <h2>{{selected}}</h2>
+          <div class="ft-entry">{{{content}}}</div>
+        {{else}}
+          <p class="ft-label">{{journalName}}</p>
+          <h2>Welcome, user.</h2>
+          <p>Select a record from the directory to begin.</p>
+          <p class="ft-prompt">READY &gt; <span class="ft-cursor">&#9608;</span></p>
+        {{/if}}
+      </article>
+    </div>
+  {{/if}}
+  <footer class="ft-footer"><span>PROPERTY OF THE WASTELAND</span>{{#if isGM}}<button type="button" data-action="editJournal">EDIT SOURCE JOURNAL</button>{{/if}}</footer>
+</section>
