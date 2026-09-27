@@ -1,0 +1,36 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run check
+      - run: python3 scripts/package.py
+      - name: Publish versioned release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          VERSION=$(node -p 'JSON.parse(require("fs").readFileSync("module.json")).version')
+          TAG="v${VERSION}"
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" != "$TAG" ]]; then
+            echo "Tag and manifest version do not match" >&2
+            exit 1
+          fi
+          gh release create "$TAG" \
+            "dist/fallout-terminal-${VERSION}.zip" dist/module.json dist/SHA256SUMS.txt \
+            --target "$GITHUB_SHA" --title "Fallout Journal Terminals ${VERSION}" \
+            --notes-file CHANGELOG.md --latest
